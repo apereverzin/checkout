@@ -22,8 +22,18 @@ public class ShoppingCartTest {
     }
 
     @Test
+    public void getTotalPrice_twoApples() {
+        testTotalPrice(new BigDecimal(0.6), APPLE, APPLE);
+    }
+
+    @Test
+    public void getTotalPrice_threeApples() {
+        testTotalPrice(new BigDecimal(1.2), APPLE, APPLE, APPLE);
+    }
+
+    @Test
     public void getTotalPrice_fourApples() {
-        testTotalPrice(new BigDecimal(2.4), APPLE, APPLE, APPLE, APPLE);
+        testTotalPrice(new BigDecimal(1.2), APPLE, APPLE, APPLE, APPLE);
     }
 
     @Test
@@ -32,13 +42,28 @@ public class ShoppingCartTest {
     }
 
     @Test
+    public void getTotalPrice_twoOranges() {
+        testTotalPrice(new BigDecimal(0.5), ORANGE, ORANGE, ORANGE);
+    }
+
+    @Test
     public void getTotalPrice_threeOranges() {
-        testTotalPrice(new BigDecimal(0.75), ORANGE, ORANGE, ORANGE);
+        testTotalPrice(new BigDecimal(0.5), ORANGE, ORANGE, ORANGE);
+    }
+
+    @Test
+    public void getTotalPrice_fourOranges() {
+        testTotalPrice(new BigDecimal(0.75), ORANGE, ORANGE, ORANGE, ORANGE);
     }
 
     @Test
     public void getTotalPrice_threeApplesAndOrange() {
-        testTotalPrice(new BigDecimal(2.05), APPLE, APPLE, ORANGE, APPLE);
+        testTotalPrice(new BigDecimal(1.45), APPLE, APPLE, ORANGE, APPLE);
+    }
+
+    @Test
+    public void getTotalPrice_threeApplesAndFiveOranges() {
+        testTotalPrice(new BigDecimal(2.2), APPLE, APPLE, ORANGE, ORANGE, APPLE, ORANGE, ORANGE, ORANGE);
     }
 
     private void testTotalPrice(BigDecimal expectedTotalPrice, String... items) {
